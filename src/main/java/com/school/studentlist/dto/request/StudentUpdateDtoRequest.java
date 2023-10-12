@@ -2,6 +2,7 @@ package com.school.studentlist.dto.request;
 
 import com.school.studentlist.entity.Performance;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +26,7 @@ public class StudentUpdateDtoRequest {
     @Pattern(regexp = "^[a-zA-Za-яА-Я]*$", message = "Отчество должно состоять только из букв")
     private String middleName;
 
-    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Дата рождения должна быть в формате YYYY-MM-DD")
+    @NotNull
     private LocalDate birthdate;
 
     private Performance performance;

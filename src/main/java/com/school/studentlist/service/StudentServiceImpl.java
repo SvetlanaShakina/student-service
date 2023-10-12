@@ -40,8 +40,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDtoResponse updateStudent(StudentUpdateDtoRequest request) {
-        Student studentToUpdate = repository.findById(request.getId())
+        repository.findById(request.getId())
                 .orElseThrow(() -> new ServiceException("Студент не найден"));
+        Student studentToUpdate = mapper.map(request, Student.class);
         return mapper.map(repository.save(studentToUpdate), StudentDtoResponse.class);
     }
 }
